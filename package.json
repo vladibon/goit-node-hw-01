@@ -1,0 +1,19 @@
+{
+  "name": "goit-node-hw-01",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index",
+    "start:dev": "nodemon index --ignore db/"
+  },
+  "repository": "https://github.com/vladibon/goit-node-hw-01.git",
+  "author": "Vladimir Bondar <vladi.bondar@gmail.com>",
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  },
+  "dependencies": {
+    "commander": "^8.3.0",
+    "nanoid": "^3.1.32"
+  }
+}
