@@ -15,10 +15,9 @@ program
   .option('-p, --phone <type>', 'user phone');
 
 program.parse(process.argv);
+invokeAction(program.opts());
 
-const argv = program.opts();
-
-const invokeAction = async ({ action, id, name, email, phone }) => {
+async function invokeAction({ action, id, name, email, phone }) {
   switch (action) {
     case 'list':
       const contacts = await listContacts();
@@ -43,6 +42,4 @@ const invokeAction = async ({ action, id, name, email, phone }) => {
     default:
       console.warn('\x1B[31m Unknown action type!');
   }
-};
-
-invokeAction(argv);
+}
