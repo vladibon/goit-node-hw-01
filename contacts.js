@@ -29,7 +29,7 @@ const removeContact = async contactId => {
     if (idx === -1) return null;
 
     const removedContact = contacts.splice(idx, 1)[0];
-    await fs.writeFile(contactsPath, JSON.stringify(contacts, null, 2));
+    await updateContacts(contacts);
     return removedContact;
   } catch ({ message }) {
     console.log(message);
@@ -42,12 +42,15 @@ const addContact = async (name, email, phone) => {
     const contacts = await listContacts();
 
     contacts.push(newContact);
-    await fs.writeFile(contactsPath, JSON.stringify(contacts, null, 2));
+    await updateContacts(contacts);
     return newContact;
   } catch ({ message }) {
     console.log(message);
   }
 };
+
+const updateContacts = async contacts =>
+  await fs.writeFile(contactsPath, JSON.stringify(contacts, null, 2));
 
 module.exports = {
   listContacts,
